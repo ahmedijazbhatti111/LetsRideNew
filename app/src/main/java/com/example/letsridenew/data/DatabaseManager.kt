@@ -59,8 +59,10 @@ class DatabaseManager {
             .setValue(schedule)
     }
 
-    fun insertTrackRecord(record: TrackRecord) {
-        currentUserDb.child("TrackRecords").child(record.id).setValue(record)
+    fun insertTrackRecord(record: TrackRecord,onTrackRecordCallback: OnTrackRecordCallback) {
+        currentUserDb.child("TrackRecords").child(record.id!!).setValue(record).addOnCompleteListener {
+            onTrackRecordCallback.onTrackSuccessful(record)
+        }
     }
 
     fun insertTrackingLocation(
@@ -73,113 +75,41 @@ class DatabaseManager {
             }
     }
 
-//    fun readTrackRecord(
-//        fromCurUid: String?,
-//        trackRecordCallback: OnTrackRecordCallback,
-//        childCallback: OnTrackRecordChildCallback
-//    ) {
-//        currentUserDb.child("TrackRecords").child(fromCurUid!!)
-//            .addValueEventListener(object : ValueEventListener {
-//                override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                    val record = TrackRecord(
-//                        dataSnapshot.child("fromCurUid").value.toString(),
-//                        Location(
-//                            dataSnapshot.child("fromCurLoc").child("name").value.toString(),
-//                            LatLng(
-//                                dataSnapshot.child("fromCurLoc").child("latLng").child("latitude")
-//                                    .value.toString().toDouble(),
-//                                dataSnapshot.child("fromCurLoc").child("latLng").child("longitude")
-//                                    .value.toString().toDouble()
-//                            )
-//                        ),
-//                        Location(
-//                            dataSnapshot.child("toCurLoc").child("name").value.toString(),
-//                            LatLng(
-//                                dataSnapshot.child("toCurLoc").child("latLng").child("latitude")
-//                                    .value.toString().toDouble(),
-//                                dataSnapshot.child("toCurLoc").child("latLng").child("longitude")
-//                                    .value.toString().toDouble()
-//                            )
-//                        ),
-//                        dataSnapshot.child("track_status").value.toString()
-//                    )
-//                    trackRecordCallback.onTrackSuccessful(record)
-//                }
-//
-//                override fun onCancelled(databaseError: DatabaseError) {
-//                    Log.e("Database", "onCancelled", databaseError.toException())
-//                }
-//            })
-//        currentUserDb.child("TrackRecords").child(fromCurUid)
-//            .addChildEventListener(object : ChildEventListener {
-//                override fun onChildAdded(
-//                    dataSnapshot: DataSnapshot,
-//                    s: String?
-//                ) {
-//                    val record = TrackRecord(
-//                        dataSnapshot.child("fromCurUid").value.toString(),
-//                        Location(
-//                            dataSnapshot.child("fromCurLoc").child("name").value.toString(),
-//                            LatLng(
-//                                dataSnapshot.child("fromCurLoc").child("latLng").child("latitude")
-//                                    .value.toString().toDouble(),
-//                                dataSnapshot.child("fromCurLoc").child("latLng").child("longitude")
-//                                    .value.toString().toDouble()
-//                            )
-//                        ),
-//                        Location(
-//                            dataSnapshot.child("toCurLoc").child("name").value.toString(),
-//                            LatLng(
-//                                dataSnapshot.child("toCurLoc").child("latLng").child("latitude")
-//                                    .value.toString().toDouble(),
-//                                dataSnapshot.child("toCurLoc").child("latLng").child("longitude")
-//                                    .value.toString().toDouble()
-//                            )
-//                        ),
-//                        dataSnapshot.child("track_status").value.toString()
-//                    )
-//                    childCallback.onChildAdded(record, s)
-//                }
-//
-//                override fun onChildChanged(
-//                    dataSnapshot: DataSnapshot,
-//                    s: String?
-//                ) {
-//                    val record = TrackRecord(
-//                        dataSnapshot.child("fromCurUid").value.toString(),
-//                        Location(
-//                            dataSnapshot.child("fromCurLoc").child("name").value.toString(),
-//                            LatLng(
-//                                dataSnapshot.child("fromCurLoc").child("latLng").child("latitude")
-//                                    .value.toString().toDouble(),
-//                                dataSnapshot.child("fromCurLoc").child("latLng").child("longitude")
-//                                    .value.toString().toDouble()
-//                            )
-//                        ),
-//                        Location(
-//                            dataSnapshot.child("toCurLoc").child("name").value.toString(),
-//                            LatLng(
-//                                dataSnapshot.child("toCurLoc").child("latLng").child("latitude")
-//                                    .value.toString().toDouble(),
-//                                dataSnapshot.child("toCurLoc").child("latLng").child("longitude")
-//                                    .value.toString().toDouble()
-//                            )
-//                        ),
-//                        dataSnapshot.child("track_status").value.toString()
-//                    )
-//                    childCallback.onChildChanged(record, s)
-//                }
-//
-//                override fun onChildRemoved(dataSnapshot: DataSnapshot) {}
-//                override fun onChildMoved(
-//                    dataSnapshot: DataSnapshot,
-//                    s: String?
-//                ) {
-//                }
-//
-//                override fun onCancelled(databaseError: DatabaseError) {}
-//            })
-//    }
+    fun readTrackRecord(
+        uid: String?,
+        trackRecordCallback: OnTrackRecordCallback
+    ) {
+        currentUserDb.child("TrackRecords").child(uid!!)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val record = TrackRecord(
+                        dataSnapshot.child("id").value.toString(),
+                        dataSnapshot.child("passengerUid").value.toString(),
+                        Location(
+                            dataSnapshot.child("passengerLoc").child("name").value.toString(),
+                            LatLng(
+                                dataSnapshot.child("passengerLoc").child("latLng").child("latitude").value.toString().toDouble(),
+                                dataSnapshot.child("passengerLoc").child("latLng").child("longitude").value.toString().toDouble()
+                            )
+                        ),
+                        dataSnapshot.child("driverUid").value.toString(),
+                        Location(
+                            dataSnapshot.child("driverLoc").child("name").value.toString(),
+                            LatLng(
+                                dataSnapshot.child("driverLoc").child("latLng").child("latitude").value.toString().toDouble(),
+                                dataSnapshot.child("driverLoc").child("latLng").child("longitude").value.toString().toDouble()
+                            )
+                        ),
+                        dataSnapshot.child("trackStatus").value.toString()
+                    )
+                    trackRecordCallback.onReadTrackRecord(record)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e("Database", "onCancelled", databaseError.toException())
+                }
+            })
+    }
 
     fun readUser(user_id: String?, myUserCallback: MyUserCallback) {
         currentUserDb.child("User").child(user_id!!)

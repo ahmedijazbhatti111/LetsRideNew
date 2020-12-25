@@ -91,17 +91,22 @@ class ScheduleListActivity : AppCompatActivity(),DriversListAdapter.OnClickListe
                                     runOnUiThread {
                                         for (s in scheduleList!!) {
                                             if(unique.add(s.getUser()!!.uid)) {
-                                                schedule = s
-                                                println("[full-outer]${schedule!!.getUser()!!.name}[outer]")
-                                                GetDirectionsData().execute(getUrl(s.source!!.getLatLng()!!, latLngSource!!, "driving"), this@ScheduleListActivity)
+                                                selectedSchedulers.add(s)
+                                                //schedule = s
+                                                //println("[full-outer]${schedule!!.getUser()!!.name}[outer]")
+                                                //GetDirectionsData().execute(getUrl(s.source!!.getLatLng()!!, latLngSource!!, "driving"), this@ScheduleListActivity)
                                             }
                                         }
                                     }
                                 }
                                 processComplete.invokeOnCompletion {
                                     runOnUiThread {
-                                        dismissNoDriver()
-                                        adapter.notifyDataSetChanged()
+                                        if(selectedSchedulers.isEmpty()){
+                                            showNoDriver()
+                                        }else {
+                                            dismissNoDriver()
+                                            adapter.notifyDataSetChanged()
+                                        }
                                     }
                                 }
 
@@ -143,14 +148,12 @@ class ScheduleListActivity : AppCompatActivity(),DriversListAdapter.OnClickListe
             if(unique.add(schedule!!.getUser()!!.uid)) {
                 selectedSchedulers.add(schedule!!)
             }
-
             if(selectedSchedulers.isEmpty()){
                 showNoDriver()
             }else {
                 dismissNoDriver()
                 adapter.notifyDataSetChanged()
             }
-
             println("[inside]" + selectedSchedulers[0].pickUpTime.toString() + "[inside]")
         } else {
             showNoDriver()

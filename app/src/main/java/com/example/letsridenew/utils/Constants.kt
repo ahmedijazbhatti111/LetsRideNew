@@ -15,4 +15,5 @@ object Constants {
     const val ACCEPTED = "accepted"
     const val REJECTED = "rejected"
     const val REQUEST = "Request"
+    const val TRACKING = "Tracking"
 }

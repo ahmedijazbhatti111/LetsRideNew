@@ -24,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_driver_info.*
 
 class DriverInfoActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback, TaskLoadedCallback,
@@ -54,8 +55,8 @@ class DriverInfoActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         toolbar2.navigationIcon = ResourcesCompat.getDrawable(resources,R.drawable.icon_back,theme)
         toolbar2.setNavigationOnClickListener { onBackPressed() }
 
-        sydney2 = schedule!!.destination!!.getLatLng()!!
-        sydney1 = schedule!!.source!!.getLatLng()!!
+        sydney2 = schedule!!.destination!!.latLng!!
+        sydney1 = schedule!!.source!!.latLng!!
         val mapFragment = supportFragmentManager.findFragmentById(R.id.p_map_route) as SupportMapFragment?
         mapFragment!!.getMapAsync(this@DriverInfoActivity)
 
@@ -102,7 +103,9 @@ class DriverInfoActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         progressDialog.setMessage("Please wait for response.. ");
         progressDialog.setCancelable(false)
         progressDialog.show()
-        databaseManager.insertRideRequest(RideRequest(currentUser!!.uid, schedule!!.getUser()!!.uid,Constants.PENDING),this)
+
+        val request = RideRequest(currentUser!!.uid, schedule!!.getUser()!!.uid,Constants.PENDING)
+        databaseManager.insertRideRequest(request,this)
     }
 
     override fun onMapReady(googleMap : GoogleMap ) {

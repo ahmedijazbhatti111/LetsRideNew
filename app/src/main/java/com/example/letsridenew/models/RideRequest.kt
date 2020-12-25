@@ -2,12 +2,6 @@ package com.example.letsridenew.models
 
 import java.io.Serializable
 
-class RideRequest : Serializable{
-    var from_uid: String? = null
-    var to_uid: String? = null
-    var req_status: String? = null
+data class RideRequest(var from_uid: String? = null,var to_uid: String? = null, var req_status: String? = null) : Serializable{
 
-    constructor()
-
-    constructor(uid: String?, uid1: String?, pending: String)
 }

@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 
 class Location {
     var name: String? = null
-    private var latLng: LatLng? = null
+    var latLng: LatLng? = null
     var time: String? = null
 
     constructor()
@@ -19,11 +19,4 @@ class Location {
         this.time = time
     }
 
-    fun getLatLng(): LatLng? {
-        return latLng
-    }
-
-    fun setLatLng(latLng: LatLng?) {
-        this.latLng = latLng
-    }
 }
