@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "83722404324",
+    "firebase_url": "https://letsride-63d40.firebaseio.com",
+    "project_id": "letsride-63d40",
+    "storage_bucket": "letsride-63d40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83722404324:android:1e1d0fc99df59709e6c7f1",
+        "android_client_info": {
+          "package_name": "com.example.letsridenew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83722404324-7s45inpedqd9vukptl6o16bvu4lo8lof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBP0oLQUnEzdhhdw82bGhs2IaYHkpL0dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83722404324-7s45inpedqd9vukptl6o16bvu4lo8lof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83722404324:android:de42efa610beb4b4e6c7f1",
+        "android_client_info": {
+          "package_name": "com.innomalist.taxi.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83722404324-7s45inpedqd9vukptl6o16bvu4lo8lof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBP0oLQUnEzdhhdw82bGhs2IaYHkpL0dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83722404324-7s45inpedqd9vukptl6o16bvu4lo8lof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

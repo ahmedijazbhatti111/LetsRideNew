@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BaseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/std_margin"
+            android:background="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/llSourceSearchbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginEnd="@dimen/std_margin"
+                    android:background="@drawable/bg_rounded_inverse"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/source_lo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <fragment
+                            android:id="@+id/source_searchBar"
+                            android:name="com.google.android.libraries.places.compat.ui.PlaceAutocompleteFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/sourcePin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/icon_pin_a"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtSourceAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:text="@string/source_here"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/sourceGps"
+                        app:layout_constraintStart_toEndOf="@+id/sourcePin"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/sourceGps"
+                        android:layout_width="@dimen/std_img_size"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="5dp"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/icon_current_location"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/llDestSearchbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/llSourceSearchbar"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginEnd="@dimen/std_margin"
+                    android:background="@drawable/bg_rounded_inverse"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/destinationLo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:outlineProvider="bounds"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <fragment
+                            android:id="@+id/dest_searchBar"
+                            android:name="com.google.android.libraries.places.compat.ui.PlaceAutocompleteFragment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/destinationPin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/icon_pin_b"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtDestinationAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:text="@string/destination_here"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/destinationGps"
+                        app:layout_constraintStart_toEndOf="@+id/destinationPin"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/destinationGps"
+                        android:layout_width="@dimen/std_img_size"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="5dp"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/icon_current_location"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/rlIcGps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/map"
+                android:gravity="right"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/mGps"
+                    android:layout_width="38dp"
+                    android:layout_height="39dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/std_margin"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginEnd="@dimen/std_margin"
+                    android:layout_marginBottom="@dimen/std_margin"
+                    android:background="@drawable/bg_round"
+                    android:contentDescription="@string/image"
+                    android:elevation="@dimen/std_elevation"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_current_location" />
+            </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/progressbarLatLng"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/mPin"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_pin"
+                android:translationY="-18dp"
+                android:contentDescription="@string/image" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorText"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/l_layout_distance_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/std_margin"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginRight="@dimen/std_margin"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtDuration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/dotdot"
+                            android:gravity="right"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtDistance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/dotdot"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/std_margin"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginRight="@dimen/std_margin"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/llPickupTime"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button_invert"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_button_solid"
+                            android:gravity="center"
+                            android:text="@string/pickup_time"
+                            android:textColor="@color/colorText" />
+
+                        <TextView
+                            android:id="@+id/txtTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/time"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llPickupDate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button_invert"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_button_solid"
+                            android:gravity="center"
+                            android:text="@string/pickup_date"
+                            android:textColor="@color/colorText" />
+
+                        <TextView
+                            android:id="@+id/txtDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/date"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/std_margin"
+                android:background="@drawable/rounded_button_solid"
+                android:stateListAnimator="@null"
+                android:text="@string/confirm"
+                android:textAllCaps="false"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnPickSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/std_margin"
+                android:background="@drawable/rounded_button_solid"
+                android:stateListAnimator="@null"
+                android:text="@string/confirm_pickup"
+                android:textAllCaps="false"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btnPickDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/std_margin"
+                android:background="@drawable/rounded_button_solid"
+                android:stateListAnimator="@null"
+                android:text="@string/confirm_dropoff"
+                android:textAllCaps="false"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">LetsRideNew</string>
+    <string name="choose_account_type">Choose Account Type</string>
+    <string name="driver">Driver</string>
+    <string name="image">image</string>
+    <string name="passenger">Passenger</string>
+    <string name="hello_user">Hello user!</string>
+    <string name="please_fill_out_the_form_below_to_get_started">Please fill out the form below to get started</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_account">Don\'t have account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="user_name">User name</string>
+    <string name="phone_no">phone no</string>
+    <string name="vehicle_information">Vehicle information</string>
+    <string name="vehicle_name">Vehicle name</string>
+    <string name="vehicle_no">Vehicle no</string>
+    <string name="available_seats_in_vehicle">Available seats in vehicle</string>
+    <string name="select_type_of_vehicle">Select type of vehicle</string>
+    <string name="select_color_of_vehicle">Select color of vehicle</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="your_account_type">Your account type</string>
+    <string name="chooseAccountType">Choose Account Type</string>
+    <string name="create_account">Create account</string>
+
+    <string name="title_activity_schedule_list">Available Drivers</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="no_internet_connection">No Internet connection</string>
+    <string name="we_ll_notify_you_when_your_connection_is_back">We\'ll notify you when your connection is back</string>
+    <string name="retry">retry</string>
+    <string name="title_activity_main">Make Schedule</string>
+    <string name="source_here">Source here</string>
+    <string name="destination_here">Destination here</string>
+    <string name="dotdot">......</string>
+    <string name="pickup_time">Pickup time</string>
+    <string name="time">Time</string>
+    <string name="pickup_date">Pickup date</string>
+    <string name="date">Date</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_pickup">Confirm pickup</string>
+    <string name="confirm_dropoff">Confirm dropoff</string>
+    <string name="select_dropoff_location">Select dropoff location</string>
+    <string name="select_pickup_location">Select pickup location</string>
+    <string name="find_someone">Find someone</string>
+    <string name="logout">Logout</string>
+    <string name="account">Account</string>
+    <string name="sorry_no_driver_found">Sorry! No Driver found</string>
+    <string name="we_ll_notify_you_when_any_driver_is_available">We\'ll notify you when any driver is available</string>
+    <string name="search_driver_again">Search Driver Again</string>
+    <string name="driver_route">Driver Route</string>
+    <string name="tracking">Tracking</string>
+    <string name="route_description">Route description</string>
+    <string name="departure_time">Departure time:</string>
+    <string name="description_here">description here</string>
+    <string name="source">Source:</string>
+    <string name="destination">Destination:</string>
+    <string name="name">Name:</string>
+    <string name="name_here">name here</string>
+    <string name="type">Type:</string>
+    <string name="type_here">type here</string>
+    <string name="number">Number:</string>
+    <string name="number_here">number here</string>
+    <string name="available_seats">Available seats:</string>
+    <string name="seats_here">seats here</string>
+    <string name="color">Color:</string>
+    <string name="color_here">color here</string>
+    <string name="send_request">Send Request</string>
+    <string name="main_title">Main Title</string>
+    <string name="sub_title">Sub Title</string>
+    <string name="click_to_continue">click to continue</string>
+    <string name="johndoe">JohnDoe</string>
+    <string name="toyota_etios_mho2_np_1234">Toyota Etios * MHO2 NP 1234</string>
+    <string name="_54_hollybank_rd_southampton">54 Hollybank Rd, Southampton</string>
+    <string name="cash">- Cash</string>
+    <string name="cancel">Cancel</string>
+    <string name="chat">Chat</string>
+    <string name="_23_50">$23.50</string>
+
+    <string-array name="select_type_of_vehicle">
+        <item>Bike</item>
+        <item>Car</item>
+        <item>Bus</item>
+        <item>Wagon</item>
+        <item>Auto</item>
+    </string-array>
+    <string-array name="select_color_of_vehicle">
+        <item>Black</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>White</item>
+        <item>Gray</item>
+        <item>Brown</item>
+    </string-array>
+</resources>

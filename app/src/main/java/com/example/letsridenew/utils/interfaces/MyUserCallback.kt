@@ -1,0 +1,1 @@
+package com.example.letsridenew.utils.interfacesimport com.example.letsridenew.models.Userinterface MyUserCallback {    fun onCallback(user: User?)}
