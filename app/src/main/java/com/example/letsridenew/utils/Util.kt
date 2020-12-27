@@ -1,10 +1,13 @@
 package com.example.letsridenew.utils
 
+import android.app.AlertDialog
 import android.content.Context
 import android.location.Geocoder
+import android.os.Message
 import android.text.TextUtils
 import android.widget.Toast
 import com.example.letsridenew.R
+import com.example.letsridenew.SplashActivity
 import com.example.letsridenew.models.Schedule
 import com.google.android.gms.maps.model.LatLng
 import java.io.IOException
@@ -55,7 +58,21 @@ class Util {
             }
             return add!!
         }
+        fun Context.showAlertDialog(title:String,message: String,onPositiveBtnClick:OnDialogPositiveClick): AlertDialog? {
+            return AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.yes) { _, _ ->
+                    onPositiveBtnClick.onClick()
+                }
+                .setNegativeButton(android.R.string.no) { dialogInterface, i -> dialogInterface.cancel() }
+                .setIcon(android.R.drawable.ic_dialog_email)
+                .show()
+        }
     }
-
+    interface OnDialogPositiveClick{
+        fun onClick()
+    }
 
 }

@@ -5,6 +5,7 @@ import com.example.letsridenew.models.*
 import com.example.letsridenew.utils.interfaces.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.*
+import java.lang.Exception
 import java.util.*
 
 class DatabaseManager {
@@ -82,26 +83,44 @@ class DatabaseManager {
         currentUserDb.child("TrackRecords").child(uid!!)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val record = TrackRecord(
-                        dataSnapshot.child("id").value.toString(),
-                        dataSnapshot.child("passengerUid").value.toString(),
-                        Location(
+                    var trackSt = ""
+                    var driLoc: Location? = null
+                    var driId = ""
+                    var passLoc: Location? = null
+                    var passId = ""
+                    var id = ""
+
+                    try { id = dataSnapshot.child("id").value.toString() }catch (e : Exception){}
+                    try { passId = dataSnapshot.child("passengerUid").value.toString() }catch (e : Exception){}
+                    try { passLoc = Location(
                             dataSnapshot.child("passengerLoc").child("name").value.toString(),
                             LatLng(
                                 dataSnapshot.child("passengerLoc").child("latLng").child("latitude").value.toString().toDouble(),
                                 dataSnapshot.child("passengerLoc").child("latLng").child("longitude").value.toString().toDouble()
                             )
-                        ),
-                        dataSnapshot.child("driverUid").value.toString(),
-                        Location(
-                            dataSnapshot.child("driverLoc").child("name").value.toString(),
-                            LatLng(
-                                dataSnapshot.child("driverLoc").child("latLng").child("latitude").value.toString().toDouble(),
-                                dataSnapshot.child("driverLoc").child("latLng").child("longitude").value.toString().toDouble()
-                            )
-                        ),
-                        dataSnapshot.child("trackStatus").value.toString()
-                    )
+                        )
+                    }catch (e : Exception){}
+                    try { driId = dataSnapshot.child("driverUid").value.toString()}catch (e : Exception){}
+                    try { driLoc = Location(
+                        dataSnapshot.child("driverLoc").child("name").value.toString(),
+                        LatLng(
+                            dataSnapshot.child("driverLoc").child("latLng").child("latitude").value.toString().toDouble(),
+                            dataSnapshot.child("driverLoc").child("latLng").child("longitude").value.toString().toDouble()
+                        )
+                    )}catch (e : Exception){}
+                    try {trackSt = dataSnapshot.child("trackStatus").value.toString()}catch (e : Exception){}
+
+                    val record = TrackRecord()
+                    record.id = id
+                    record.driverUid = driId
+                    record.passengerUid = passId
+                    record.trackStatus = trackSt
+                    try {
+                        record.driverLoc = driLoc
+                    }catch (e:Exception){}
+                    try {
+                        record.passengerLoc = passLoc
+                    }catch (e:Exception){}
                     trackRecordCallback.onReadTrackRecord(record)
                 }
 

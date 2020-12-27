@@ -159,8 +159,11 @@ open class BaseActivity : MapActivity(),
         val headerView = navigationView!!.getHeaderView(0)
         val navUsername = headerView.findViewById<TextView>(R.id.navUsername)
         val navEmail = headerView.findViewById<TextView>(R.id.navEmail)
-        navUsername.text = currentUser!!.name
-        navEmail.text = currentUser!!.email
+        try {
+            navUsername.text = currentUser!!.name
+            navEmail.text = currentUser!!.email
+        }catch (e:java.lang.Exception){}
+
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 

@@ -152,6 +152,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
       <Button
+          android:id="@+id/cancelBtn"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="10dp"
@@ -160,6 +161,7 @@
           android:text="@string/cancel" />
 
       <Button
+          android:id="@+id/chatBtn"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="10dp"
@@ -168,8 +170,6 @@
           android:background="@drawable/rounded_button_solid"
           android:text="@string/chat" />
     </LinearLayout>
-
-
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

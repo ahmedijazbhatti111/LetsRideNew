@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.content_base.*
+import java.lang.Exception
 
 open class DriverActivity : BaseActivity() {
 
@@ -32,7 +33,10 @@ open class DriverActivity : BaseActivity() {
         //setContentView(R.layout.activity_driver)
         checkRideRequest()
 
-        PushNotificationManager().subscribeNotification("d-" + currentUser!!.uid)
+        try {
+            PushNotificationManager().subscribeNotification("d-" + currentUser!!.uid)
+        }catch (e:Exception){}
+
 
         btnNext.text = getString(R.string.confirm)
         btnNext.setOnClickListener {
@@ -82,19 +86,21 @@ open class DriverActivity : BaseActivity() {
             override fun onRequestsRead(rideRequests: ArrayList<RideRequest?>?) {
                 println("Read all ride requests ---------")
                 for (request in rideRequests!!) {
-                    if (request!!.to_uid.equals(currentUser!!.uid)) {
-                        println("Ride requests equals to current uid ---------")
-                        databaseManager!!.readAllUsers(object : MyUsersListCallback {
-                            override fun onUsersRead(users: ArrayList<User?>?) {
-                                for (user in users!!) {
-                                    if (user!!.uid.equals(request.from_uid) && request.req_status.equals(Constants.PENDING)) {
-                                        println("Ride requests id equals to user id ---------")
-                                        showRequestDialog(request,user)
+                    try {
+                        if (request!!.to_uid.equals(currentUser!!.uid)) {
+                            println("Ride requests equals to current uid ---------")
+                            databaseManager!!.readAllUsers(object : MyUsersListCallback {
+                                override fun onUsersRead(users: ArrayList<User?>?) {
+                                    for (user in users!!) {
+                                        if (user!!.uid.equals(request.from_uid) && request.req_status.equals(Constants.PENDING)) {
+                                            println("Ride requests id equals to user id ---------")
+                                            showRequestDialog(request,user)
+                                        }
                                     }
                                 }
-                            }
-                        })
-                    }
+                            })
+                        }
+                    }catch (e:Exception){}
                 }
             }
         })

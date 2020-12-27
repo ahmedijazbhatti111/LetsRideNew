@@ -231,6 +231,7 @@ open class MapActivity : AppCompatActivity() ,
 
     override fun onMapReady(googleMap: GoogleMap?) {
         mMap = googleMap
+        mMap!!.clear()
         //Initialize Google Play Services
 
         //mMap!!.isMyLocationEnabled = true
