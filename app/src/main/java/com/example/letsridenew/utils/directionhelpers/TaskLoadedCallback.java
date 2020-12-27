@@ -1,4 +1,4 @@
-package com.example.letsridenew.directionhelpers;
+package com.example.letsridenew.utils.directionhelpers;
 
 /**
  * Created by Vishal on 10/20/2018.

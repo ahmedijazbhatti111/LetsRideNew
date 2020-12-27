@@ -22,13 +22,12 @@ import com.example.letsridenew.SplashActivity.Companion.currentUser
 import com.example.letsridenew.data.AuthenticationManager
 import com.example.letsridenew.data.DatabaseManager
 import com.example.letsridenew.data.PushNotificationManager
-import com.example.letsridenew.directionhelpers.FetchURL
-import com.example.letsridenew.directionhelpers.GetDirectionsData
-import com.example.letsridenew.directionhelpers.TaskLoadedCallback
+import com.example.letsridenew.utils.directionhelpers.FetchURL
+import com.example.letsridenew.utils.directionhelpers.GetDirectionsData
+import com.example.letsridenew.utils.directionhelpers.TaskLoadedCallback
 import com.example.letsridenew.utils.ConnectionHelper
 import com.example.letsridenew.utils.Constants
 import com.example.letsridenew.utils.Util
-import com.example.letsridenew.utils.Util.Companion.getAddressFromLatLng
 import com.example.letsridenew.utils.Util.Companion.getUrl
 import com.example.letsridenew.utils.interfaces.DiractionCallback
 import com.google.android.gms.common.api.Status

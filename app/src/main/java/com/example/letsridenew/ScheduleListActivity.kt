@@ -10,13 +10,11 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.letsridenew.adapters.DriversListAdapter
 import com.example.letsridenew.data.DatabaseManager
-import com.example.letsridenew.directionhelpers.GetDirectionsData
 import com.example.letsridenew.models.Schedule
 import com.example.letsridenew.utils.Constants.timeMargin
 import com.example.letsridenew.utils.RouteUtils.Companion.getEstimatedRouteFromGivenSchedulesList
 import com.example.letsridenew.utils.TimeUtils
 import com.example.letsridenew.utils.Util
-import com.example.letsridenew.utils.Util.Companion.getUrl
 import com.example.letsridenew.utils.interfaces.DiractionCallback
 import com.example.letsridenew.utils.interfaces.MyScheduleCallback
 import com.google.android.gms.maps.model.LatLng

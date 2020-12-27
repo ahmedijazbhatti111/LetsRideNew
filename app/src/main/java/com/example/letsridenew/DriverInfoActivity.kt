@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.letsridenew.SplashActivity.Companion.currentUser
 import com.example.letsridenew.data.DatabaseManager
-import com.example.letsridenew.directionhelpers.FetchURL
-import com.example.letsridenew.directionhelpers.TaskLoadedCallback
+import com.example.letsridenew.utils.directionhelpers.FetchURL
+import com.example.letsridenew.utils.directionhelpers.TaskLoadedCallback
 import com.example.letsridenew.models.RideRequest
 import com.example.letsridenew.utils.ConnectionHelper
 import com.example.letsridenew.utils.Constants
@@ -24,7 +24,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_driver_info.*
 
 class DriverInfoActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCallback, TaskLoadedCallback,
@@ -68,7 +67,6 @@ class DriverInfoActivity : AppCompatActivity(), View.OnClickListener, OnMapReady
         vColor.text = schedule!!.getUser()!!.vehicle!!.color
         vType.text = schedule!!.getUser()!!.vehicle!!.type
         vAvaSeats.text = schedule!!.getUser()!!.vehicle!!.vacantSeats
-
         if(currentUser!!.type == Constants.DRIVER){
             btnSentReq.visibility = View.GONE
         }else {

@@ -1,4 +1,4 @@
-package com.example.letsridenew.directionhelpers;
+package com.example.letsridenew.utils.directionhelpers;
 
 import com.google.android.gms.maps.model.LatLng;
 

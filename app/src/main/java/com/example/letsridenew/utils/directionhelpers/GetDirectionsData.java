@@ -1,4 +1,4 @@
-package com.example.letsridenew.directionhelpers;
+package com.example.letsridenew.utils.directionhelpers;
 
 import android.content.Context;
 import android.os.AsyncTask;

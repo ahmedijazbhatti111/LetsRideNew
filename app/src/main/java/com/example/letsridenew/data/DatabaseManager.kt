@@ -309,6 +309,34 @@ class DatabaseManager {
                 }
             })
     }
+    fun readPassengerScheduleFromDb(uid:String,myScheduleCallback: SingleScheduleCallback) {
+        val schedule = Schedule()
+        currentUserDb.child("Schedule").child("Passenger").child(uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(uides: DataSnapshot) {
+                    schedule.source!!.latLng =
+                        LatLng(
+                            uides.child("source").child("latLng").child("longitude").value as Double,
+                            uides.child("source").child("latLng").child("latitude").value as Double
+                        )
+                    schedule.source!!.name = uides.child("source").child("name").value.toString()
+                    schedule.destination!!.latLng =
+                        LatLng(
+                            uides.child("destination").child("latLng").child("longitude").value as Double,
+                            uides.child("destination").child("latLng").child("latitude").value as Double
+                        )
+                    schedule.destination!!.name = uides.child("destination").child("name").value.toString()
+                    schedule.pickUpTime = uides.child("pickUpTime").value.toString()
+                    schedule.pickUpDate = uides.child("pickUpDate").value.toString()
+                    schedule.setUser(uides.child("user").getValue(User::class.java)!!)
+                    myScheduleCallback.onCallback(schedule)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e(TAG, "onCancelled", databaseError.toException())
+                }
+            })
+    }
 
     fun readLocationFromDb(id: String?, callback: OnLocationChangeCallback) {
         currentUserDb.child("location").child(id!!)

@@ -1,5 +1,7 @@
 package com.example.letsridenew.utils
 
+import java.text.DecimalFormat
+
 object Constants {
     const val DRIVER = "driver"
     const val PASSENGER = "passenger"
@@ -16,4 +18,6 @@ object Constants {
     const val REJECTED = "rejected"
     const val REQUEST = "Request"
     const val TRACKING = "Tracking"
+
+    val format = DecimalFormat("0.000")
 }

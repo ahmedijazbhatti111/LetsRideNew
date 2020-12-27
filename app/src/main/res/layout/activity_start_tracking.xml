@@ -31,7 +31,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/constraintLayout"
       android:layout_width="match_parent"
-      android:layout_height="250dp"
+      android:layout_height="270dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent">
@@ -145,33 +145,69 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
       <Button
-          android:id="@+id/cancelBtn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_margin="10dp"
+          android:id="@+id/startRideBtn"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
           android:layout_weight="1"
-          android:background="@drawable/rounded_button_invert"
-          android:text="@string/cancel" />
+          android:background="@drawable/rounded_button_solid"
+          android:layout_marginBottom="5dp"
+          android:text="@string/start_ride"
+          android:visibility="gone"
+          android:textAllCaps="false"
+          android:textColor="@color/white" />
 
       <Button
-          android:id="@+id/chatBtn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_margin="10dp"
+          android:id="@+id/completeRideBtn"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
           android:layout_weight="1"
-          android:textColor="@color/white"
           android:background="@drawable/rounded_button_solid"
-          android:text="@string/chat" />
+          android:layout_marginBottom="5dp"
+          android:visibility="gone"
+          android:text="@string/complete_ride"
+          android:textAllCaps="false"
+          android:textColor="@color/white" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="2.5dp"
+            android:background="@drawable/rounded_button_invert"
+            android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/chatBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="2.5dp"
+            android:background="@drawable/rounded_button_solid"
+            android:text="@string/chat"
+            android:textColor="@color/white" />
+      </LinearLayout>
     </LinearLayout>
 
+
   </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

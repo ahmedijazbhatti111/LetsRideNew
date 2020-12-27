@@ -15,6 +15,8 @@ import java.util.*
 
 class Util {
     companion object{
+        var isTrackingComplete = false
+        var isRideComplete = false
         var schedule : Schedule? = null
         fun getSafeSubstring(s: String, maxLength: Int): String? {
             if (!TextUtils.isEmpty(s)) {
